@@ -1,8 +1,10 @@
-package com.tradingbot.util;
+package com.tradingbot.service;
 
 import java.util.Random;
+import org.springframework.stereotype.Service;
 
-public class TaskCodeGenerator {
+@Service
+public class TaskCodeGeneratorService {
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyz0123456789";
     private static final int LENGTH = 8;
     

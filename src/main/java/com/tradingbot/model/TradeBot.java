@@ -1,5 +1,6 @@
 package com.tradingbot.model;
 
+import com.tradingbot.service.TaskCodeGeneratorService;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,12 +28,12 @@ public class TradeBot {
 	private LocalDateTime createdDate = LocalDateTime.now();
 	
 	@Column
-	private String taskCode;
+	private String taskId = TaskCodeGeneratorService.generateRandomString();
 	
 	@Column
 	private String description;
 
 	@Column
-	private TradeBotStatus status;
+	private TradeBotStatus status = TradeBotStatus.RUNNING;
 	
 }

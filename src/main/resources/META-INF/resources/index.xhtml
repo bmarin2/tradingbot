@@ -9,13 +9,11 @@
     </h:head>
     <h:body>
         
-        <div style="margin:0 auto;width:80%;">
-            <h:form id="mainfolm">
-
-                <h:outputText value="${indexView.check()}"/>
-
+        <div style="margin:0 auto;width:80%;">      
+            <h:form>
+                <h:outputText value="#{indexView.samp()}" />
+                <p:commandButton value="Create Bot" styleClass="ui-button-success" disableOnAjax="true" action="#{indexView.createBot()}" />
             </h:form>
-            
             
             <p:card style="width: 30%; display: inline-block; margin: 1%;">
                 <f:facet name="title">
@@ -24,6 +22,8 @@
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                     quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                
+
 
             </p:card>
             
