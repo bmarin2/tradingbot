@@ -6,63 +6,99 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Index</title>
+        <style>
+            .ui-panelgrid-cell {
+                padding: 3px !important;
+            }
+            
+            .center-it{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .ui-card {
+                border: 1px solid !important;
+                border-color: darkgray !important;
+            }
+            
+        </style>
     </h:head>
     <h:body>
+        <div style="margin:0 auto;width:70%;">
         
-        <div style="margin:0 auto;width:80%;">      
-            <h:form>
-                <h:outputText value="#{indexView.samp()}" />
-                <p:commandButton value="Create Bot" styleClass="ui-button-success" disableOnAjax="true" action="#{indexView.createBot()}" />
-            </h:form>
             
-            <p:card style="width: 30%; display: inline-block; margin: 1%;">
-                <f:facet name="title">
-                    Simple Card
-                </f:facet>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
-                
 
 
-            </p:card>
+                <p:commandButton value="Create Bot" styleClass="ui-button-success" update="dialogs:manage-bot" onclick="PF('manageBot').show()" action="#{indexView.newBot()}">
+                    <p:resetInput target="dialogs:manage-bot" />
+                </p:commandButton>
+
             
-                        
-            <p:card style="width: 30%; display: inline-block;margin: 1%;">
-                <f:facet name="title">
-                    Simple Card
-                </f:facet>
+        <h:form id="form1">
+                <p:repeat value="#{indexView.bots}" var="bot">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                    <p:card style="width: 25rem;margin: .5em;display: inline-block; border-color: background ;">
+                        <f:facet name="title">
+                            Bot #{bot.symbol}
+                        </f:facet>
 
-            </p:card>
+                        <f:facet name="subtitle">
+                            Subtitle
+                        </f:facet>
+
+                        <f:facet name="footer">
+                            <p:commandButton icon="pi pi-check" value="Button" />
+                            <p:commandButton icon="pi pi-check" value="Button" style="margin-left: 3px;"/>
+                            <p:commandButton icon="pi pi-check" value="Button" style="margin-left: 3px;"/>
+                        </f:facet>
+
+                    </p:card>
+
+                </p:repeat>
             
-                        
-            <p:card style="width: 30%; display: inline-block;margin: 1%;">
-                <f:facet name="title">
-                    Simple Card
-                </f:facet>
+        </h:form>    
+        
+        <h:form id="dialogs">
+            <p:dialog header="Add new Bot" widgetVar="manageBot" height="250" width="40%" showEffect="fade" modal="true">
+                    <p:panelGrid id="manage-bot" columns="4" style="width: 100%" styleClass="ui-noborder center-it">
+                            <p:outputLabel for="input1" value="Symbol"/>
+                            <p:inputText id="input1" value="#{indexView.selectedTradeBot.symbol}" />
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                            <p:outputLabel for="select5" value="Status"/>
+                            <p:selectOneMenu value="#{indexView.selectedTradeBot.status}" id="select5" style="width:100%">
+                                <f:selectItems value="#{indexView.statuses}" var="status" itemLabel="#{status}" itemValue="#{status}"/>
+                            </p:selectOneMenu>
 
-            </p:card>
-            
-                        
-            <p:card style="width: 30%; display: inline-block;margin: 1%;">
-                <f:facet name="title">
-                    Simple Card
-                </f:facet>
+                            <p:outputLabel for="input7" value="Initial Delay"/>
+                            <p:inputText id="input7" value="#{indexView.selectedTradeBot.initialDelay}" />
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                            <p:outputLabel for="select1" value="Time Unit"/>
+                            <p:selectOneMenu value="#{indexView.selectedTradeBot.timeUnit}" id="select1" style="width:100%">
+                                <f:selectItems value="#{indexView.units}" var="unit" itemLabel="#{unit}" itemValue="#{unit}"/>
+                            </p:selectOneMenu>
 
-            </p:card>
-            
+                            <p:outputLabel for="input6" value="Delay"/>
+                            <p:inputText id="input6" value="#{indexView.selectedTradeBot.delay}" />
+
+                            <p:outputLabel for="input3" value="TaskId"/>
+                            <p:inputText id="input3" value="#{indexView.selectedTradeBot.taskId}"/>
+
+                            <p:outputLabel for="input2" value="Date Created"/>
+                            <p:datePicker id="input2" showTime="true" value="#{indexView.selectedTradeBot.createdDate}" />
+
+                            <p:outputLabel for="input4" value="Description"/>
+                            <p:inputTextarea id="input4" rows="4" cols="22" autoResize="false" value="#{indexView.selectedTradeBot.description}" />
+                    </p:panelGrid>
+                    <f:facet name="footer">
+                        <div style="padding-top:15px;">
+                            <p:commandButton value="Save" icon="pi pi-check" action="#{indexView.updateBot}" />
+                            <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageBot').hide()"
+                                             class="ui-button-secondary" type="button" />
+                        </div>
+                    </f:facet>
+            </p:dialog>
+        </h:form>
         </div>
-        
-
-        
     </h:body>
 </html>

@@ -23,15 +23,12 @@ public class TaskService {
 
     @PostConstruct
     public void init() {
-        System.out.println("Constructing Executor service");
         executorService = Executors.newScheduledThreadPool(4); // creates a thread pool with 5 threads
     }
 
     public void addTask(String taskId, Runnable task, long initialDelay, long delay, TimeUnit unit) {
         ScheduledFuture<?> scheduledFuture = executorService.scheduleWithFixedDelay(task, initialDelay, delay, unit);
         scheduledTasks.put(taskId, scheduledFuture);
-        LOGGER.info("Task added!");
-        System.out.println("Task added!");
     }
 
     public void removeTask(String taskId) {
