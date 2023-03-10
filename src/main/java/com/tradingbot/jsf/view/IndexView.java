@@ -39,10 +39,10 @@ public class IndexView implements Serializable {
 	private List<TradeBot> getAllBots() {
 		return tradeBotRepository.findAll();
 	}
-
+	
 	public void updateBot() {
 		Task task = new Task();
-		task.setTaskId(selectedTradeBot.getTaskId());
+		task.setTradeBot(selectedTradeBot);
 		
 		taskService.addTask(selectedTradeBot.getTaskId(),
 				task, 
@@ -59,6 +59,10 @@ public class IndexView implements Serializable {
 	public void newBot() {
 		selectedTradeBot = new TradeBot();
 	}
+	
+	public boolean isBotRunning(String taskId) {
+		return taskService.getScheduledTasks().containsKey(taskId);
+	}
 
 	public TimeUnit[] getUnits() {
 		return TimeUnit.values();
@@ -66,5 +70,8 @@ public class IndexView implements Serializable {
 	
 	public TradeBotStatus[] getStatuses() {
 		return TradeBotStatus.values();
+	}
+	public void confirmStop(){
+		System.out.println("BOT STOPPED");
 	}
 }

@@ -7,6 +7,10 @@
     <h:head>
         <title>Index</title>
         <style>
+            .ui-widget {
+                font-size: 13px !important;
+            }
+            
             .ui-panelgrid-cell {
                 padding: 3px !important;
             }
@@ -38,9 +42,11 @@
         <h:form id="form1">
                 <p:repeat value="#{indexView.bots}" var="bot">
 
-                    <p:card style="width: 25rem;margin: .5em;display: inline-block; border-color: background ;">
-                        <f:facet name="title">
-                            Bot #{bot.symbol}
+                    <p:card style="width:25rem; margin:.5em; display:inline-block; border-color:background; padding: 0;">
+                        <f:facet name="title" >
+                            <span style="margin-top: -5px">#{bot.symbol}</span>
+                            <p:tag styleClass="mr-2" severity="success" style="float:right" value="Running" rendered="#{indexView.isBotRunning(bot.taskId)}"/>
+                            <p:tag styleClass="mr-2" severity="warning" style="float:right" value="Stopped" rendered="#{!indexView.isBotRunning(bot.taskId)}"/>
                         </f:facet>
 
                         <f:facet name="subtitle">
@@ -48,9 +54,9 @@
                         </f:facet>
 
                         <f:facet name="footer">
-                            <p:commandButton icon="pi pi-check" value="Button" />
-                            <p:commandButton icon="pi pi-check" value="Button" style="margin-left: 3px;"/>
-                            <p:commandButton icon="pi pi-check" value="Button" style="margin-left: 3px;"/>
+                            <p:commandButton icon="pi pi-check" value="Details" oncomplete="PF('botDetails').show()" update="dialogs:manage-bot-details">
+                                <f:setPropertyActionListener value="#{bot}" target="#{indexView.selectedTradeBot}" />
+                            </p:commandButton>
                         </f:facet>
 
                     </p:card>
@@ -97,6 +103,27 @@
                                              class="ui-button-secondary" type="button" />
                         </div>
                     </f:facet>
+            </p:dialog>
+            
+            <p:dialog header="Bot Details" widgetVar="botDetails" height="250" width="40%" showEffect="fade" modal="true">
+                <p:outputPanel id="manage-bot-details" >
+                    <p:panelGrid columns="4" style="width: 100%" styleClass="ui-noborder center-it">
+                        #{indexView.selectedTradeBot.symbol}
+                    </p:panelGrid>
+                </p:outputPanel>
+                    <f:facet name="footer">
+                        <p:growl id="message" showDetail="true"/>
+                        <div style="padding-top:15px;">
+                            <p:commandButton value="Stop Bot" action="#{indexView.confirmStop}" update="message" styleClass="ui-button-warning">
+                                <p:confirm header="Confirmation" message="Are you sure you want disable this bot #{indexView.selectedTradeBot.symbol}"  />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
+                            </p:confirmDialog>
+                        </div>
+                    </f:facet>
+                
             </p:dialog>
         </h:form>
         </div>
