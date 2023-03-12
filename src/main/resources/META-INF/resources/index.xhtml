@@ -71,30 +71,39 @@
                             <p:outputLabel for="input1" value="Symbol"/>
                             <p:inputText id="input1" value="#{indexView.selectedTradeBot.symbol}" />
 
-                            <p:outputLabel for="select5" value="Status"/>
-                            <p:selectOneMenu value="#{indexView.selectedTradeBot.status}" id="select5" style="width:100%">
+                            <p:outputLabel for="select1" value="Status"/>
+                            <p:selectOneMenu value="#{indexView.selectedTradeBot.status}" id="select1" style="width:100%">
                                 <f:selectItems value="#{indexView.statuses}" var="status" itemLabel="#{status}" itemValue="#{status}"/>
                             </p:selectOneMenu>
 
-                            <p:outputLabel for="input7" value="Initial Delay"/>
-                            <p:inputText id="input7" value="#{indexView.selectedTradeBot.initialDelay}" />
+                            <p:outputLabel for="input2" value="Initial Delay"/>
+                            <p:inputText id="input2" value="#{indexView.selectedTradeBot.initialDelay}" />
 
-                            <p:outputLabel for="select1" value="Time Unit"/>
-                            <p:selectOneMenu value="#{indexView.selectedTradeBot.timeUnit}" id="select1" style="width:100%">
+                            <p:outputLabel for="select2" value="Time Unit"/>
+                            <p:selectOneMenu value="#{indexView.selectedTradeBot.timeUnit}" id="select2" style="width:100%">
                                 <f:selectItems value="#{indexView.units}" var="unit" itemLabel="#{unit}" itemValue="#{unit}"/>
                             </p:selectOneMenu>
 
-                            <p:outputLabel for="input6" value="Delay"/>
-                            <p:inputText id="input6" value="#{indexView.selectedTradeBot.delay}" />
+                            <p:outputLabel for="input3" value="Delay"/>
+                            <p:inputText id="input3" value="#{indexView.selectedTradeBot.delay}" />
 
-                            <p:outputLabel for="input3" value="TaskId"/>
-                            <p:inputText id="input3" value="#{indexView.selectedTradeBot.taskId}"/>
+                            <p:outputLabel for="input4" value="TaskId"/>
+                            <p:inputText id="input4" value="#{indexView.selectedTradeBot.taskId}"/>
+                            
+                            <p:outputLabel for="input5" value="Order Price"/>
+                            <p:inputText id="input5" value="#{indexView.selectedTradeBot.orderPrice}"/>
+                            
+                            <p:outputLabel for="input6" value="Max Orders per Cycle"/>
+                            <p:inputText id="input6" value="#{indexView.selectedTradeBot.cycleMaxOrders}"/>
+                            
+                            <p:outputLabel for="input7" value="Order Step"/>
+                            <p:inputText id="input7" value="#{indexView.selectedTradeBot.orderStep}"/>
 
-                            <p:outputLabel for="input2" value="Date Created"/>
-                            <p:datePicker id="input2" showTime="true" value="#{indexView.selectedTradeBot.createdDate}" />
+                            <p:outputLabel for="input8" value="Date Created"/>
+                            <p:datePicker id="input8" showTime="true" value="#{indexView.selectedTradeBot.createdDate}" />
 
-                            <p:outputLabel for="input4" value="Description"/>
-                            <p:inputTextarea id="input4" rows="4" cols="22" autoResize="false" value="#{indexView.selectedTradeBot.description}" />
+                            <p:outputLabel for="input9" value="Description"/>
+                            <p:inputTextarea id="input9" rows="4" cols="22" autoResize="false" value="#{indexView.selectedTradeBot.description}" />
                     </p:panelGrid>
                     <f:facet name="footer">
                         <div style="padding-top:15px;">

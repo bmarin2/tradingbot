@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TradeBot {
+public class TradeBot implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +31,15 @@ public class TradeBot {
 	
 	@Column
 	private String taskId = TaskCodeGeneratorService.generateRandomString();
+	
+	@Column
+	private Integer orderPrice = 10;
+	
+	@Column // max orders in a cycle
+	private Integer cycleMaxOrders = 5;
+	
+	@Column
+	private Double orderStep = 0.6;
 	
 	@Column
 	private String description;
