@@ -70,20 +70,20 @@
                     <p:panelGrid id="manage-bot" columns="4" style="width: 100%" styleClass="ui-noborder center-it">
                             <p:outputLabel for="input1" value="Symbol"/>
                             <p:inputText id="input1" value="#{indexView.selectedTradeBot.symbol}" />
-
-                            <p:outputLabel for="input2" value="Initial Delay"/>
-                            <p:inputText id="input2" value="#{indexView.selectedTradeBot.initialDelay}" />
-
+                            
                             <p:outputLabel for="select2" value="Time Unit"/>
                             <p:selectOneMenu value="#{indexView.selectedTradeBot.timeUnit}" id="select2" style="width:100%">
                                 <f:selectItems value="#{indexView.units}" var="unit" itemLabel="#{unit}" itemValue="#{unit}"/>
                             </p:selectOneMenu>
+                            
+                            <p:outputLabel for="input4" value="TaskId"/>
+                            <p:inputText id="input4" value="#{indexView.selectedTradeBot.taskId}"/>
+
+                            <p:outputLabel for="input2" value="Initial Delay"/>
+                            <p:inputText id="input2" value="#{indexView.selectedTradeBot.initialDelay}" />
 
                             <p:outputLabel for="input3" value="Delay"/>
                             <p:inputText id="input3" value="#{indexView.selectedTradeBot.delay}" />
-
-                            <p:outputLabel for="input4" value="TaskId"/>
-                            <p:inputText id="input4" value="#{indexView.selectedTradeBot.taskId}"/>
                             
                             <p:outputLabel for="input5" value="Order Price"/>
                             <p:inputText id="input5" value="#{indexView.selectedTradeBot.orderPrice}"/>
