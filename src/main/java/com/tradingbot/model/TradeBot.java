@@ -51,9 +51,5 @@ public class TradeBot implements Serializable {
 	private long delay = 5;
 	
 	@Column
-	private TimeUnit timeUnit = TimeUnit.MINUTES;
-	
-	@Column
-	private TradeBotStatus status = TradeBotStatus.RUNNING;
-	
+	private TimeUnit timeUnit = TimeUnit.MINUTES;	
 }

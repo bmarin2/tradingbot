@@ -66,15 +66,10 @@
         </h:form>    
         
         <h:form id="dialogs">
-            <p:dialog header="Add new Bot" widgetVar="manageBot" height="250" width="40%" showEffect="fade" modal="true">
+            <p:dialog header="Add new Bot" widgetVar="manageBot" height="300" width="40%" showEffect="fade" modal="true">
                     <p:panelGrid id="manage-bot" columns="4" style="width: 100%" styleClass="ui-noborder center-it">
                             <p:outputLabel for="input1" value="Symbol"/>
                             <p:inputText id="input1" value="#{indexView.selectedTradeBot.symbol}" />
-
-                            <p:outputLabel for="select1" value="Status"/>
-                            <p:selectOneMenu value="#{indexView.selectedTradeBot.status}" id="select1" style="width:100%">
-                                <f:selectItems value="#{indexView.statuses}" var="status" itemLabel="#{status}" itemValue="#{status}"/>
-                            </p:selectOneMenu>
 
                             <p:outputLabel for="input2" value="Initial Delay"/>
                             <p:inputText id="input2" value="#{indexView.selectedTradeBot.initialDelay}" />
@@ -97,7 +92,7 @@
                             <p:inputText id="input6" value="#{indexView.selectedTradeBot.cycleMaxOrders}"/>
                             
                             <p:outputLabel for="input7" value="Order Step"/>
-                            <p:inputText id="input7" value="#{indexView.selectedTradeBot.orderStep}"/>
+                            <p:inputText id="input7" value="#{indexView.selectedTradeBot.orderStep} %"/>
 
                             <p:outputLabel for="input8" value="Date Created"/>
                             <p:datePicker id="input8" showTime="true" value="#{indexView.selectedTradeBot.createdDate}" />

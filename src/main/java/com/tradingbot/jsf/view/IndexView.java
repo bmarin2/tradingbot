@@ -2,7 +2,6 @@ package com.tradingbot.jsf.view;
 
 import com.tradingbot.model.Task;
 import com.tradingbot.model.TradeBot;
-import com.tradingbot.model.TradeBotStatus;
 import com.tradingbot.repository.TradeBotRepository;
 import com.tradingbot.service.TaskService;
 import jakarta.annotation.PostConstruct;
@@ -67,10 +66,7 @@ public class IndexView implements Serializable {
 	public TimeUnit[] getUnits() {
 		return TimeUnit.values();
 	}
-	
-	public TradeBotStatus[] getStatuses() {
-		return TradeBotStatus.values();
-	}
+
 	public void confirmStop(){
 		System.out.println("BOT STOPPED");
 	}
