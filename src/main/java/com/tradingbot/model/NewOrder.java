@@ -27,12 +27,12 @@ public class NewOrder implements Serializable {
 	private String side;
 	
 	@Column
-	private String type;
-	
-	@Column
 	private long quoteOrderQty;
 	
 	@Column
-	private long timestamp;
+	private long timestamp;	
+		
+	@Column
+	private long orderId;
 	
 }

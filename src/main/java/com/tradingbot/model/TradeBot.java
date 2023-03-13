@@ -33,7 +33,7 @@ public class TradeBot implements Serializable {
 	private String taskId = TaskCodeGeneratorService.generateRandomString();
 	
 	@Column
-	private Integer orderPrice = 10;
+	private Integer quoteOrderQty = 10;
 	
 	@Column // max orders in a cycle
 	private Integer cycleMaxOrders = 5;
